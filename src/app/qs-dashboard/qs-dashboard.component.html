@@ -1,0 +1,46 @@
+<div>
+    <div *ngIf="showDash">
+        <table class="qs-list">
+            <tr>
+                <td>
+                    <ng-select [items]="dashboards" [(ngModel)]="selected_dashboard"
+                        (change)="reload_dashboard($event)"></ng-select>
+                </td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="testRLS" />
+                </td>
+                <td *ngIf="testRLS">
+                    <span>Check the People's Overview Dashboard for Tag based RLS</span>
+                    <ng-select [items]="qs_tag_rls"
+                        (change)="set_session_tags($event)"></ng-select>
+                </td>
+                <td class="dash-filter" *ngIf="selected_dashboard.label == 'Dark Theme(With Ads)'">
+                    <ng-select [items]="products" [(ngModel)]="selected_product" (change)="load_products($event)">Filter
+                        By Products</ng-select>
+                </td>
+                <td class="dash-filter" *ngIf="selected_dashboard.label == 'Maps Demo'">
+                    <ng-select [items]="country_codes" [(ngModel)]="selected_country"
+                        (change)="load_countries($event)">Filter By Countries</ng-select>
+                </td>
+            </tr>
+            <tr>
+                <div *ngIf="showDash" class="qs-frame" id="dashboardContainer" style="width: 90vw;"></div>
+            </tr>
+
+        </table>
+
+        <!-- <div>
+            <iframe width="400" height="400" 
+                    src="https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/444206144756/dashboards/kpi_dashboard/sheets/65ab56fe-51c1-48ef-bae5-6ff1f136eb0e/visuals/f39fe775-7ea6-4014-907c-5df8658ebc64?directory_alias=fraser-dev">
+            </iframe>
+            
+        </div> -->
+
+    </div>
+    <div *ngIf="showSession">
+        
+        <div *ngIf="showDash" class="qs-frame" id="qssession"></div>
+        
+
+    </div>
+</div>

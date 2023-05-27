@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://0rnmsgzcla.execute-api.us-east-1.amazonaws.com/dev',
+  method_name: '/embed-url'
 };
 
 /*

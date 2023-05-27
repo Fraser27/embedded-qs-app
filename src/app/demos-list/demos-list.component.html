@@ -1,0 +1,31 @@
+<div>
+    <table *ngIf="!quicksightDemos">
+        <tr>
+          <th>Demos</th>
+        </tr>
+        <tr>
+          <td><a routerLink="/quicksight" (click)="showQs()">Quicksight Demos</a></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td><a routerLink="/rekognition" (click)="showRekog()">Rekognition/Polly Demos</a></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td><a routerLink="/cognito" (click)="showCognito()">Cognito Demos</a></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+      </table>
+      
+      <!-- <div>
+        <iframe width="400" height="400" 
+                src="https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/444206144756/dashboards/kpi_dashboard/sheets/65ab56fe-51c1-48ef-bae5-6ff1f136eb0e/visuals/f39fe775-7ea6-4014-907c-5df8658ebc64?directory_alias=fraser-dev">
+        </iframe>
+        
+      </div> -->
+      <!-- <app-qs-dashboard *ngIf="quicksightDemos"></app-qs-dashboard> -->
+      <app-camera *ngIf="rekogDemos" (newItemEvent)="call_parent($event)"></app-camera>
+</div>

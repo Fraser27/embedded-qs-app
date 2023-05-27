@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'embedded-qs-app'`, () => {
+  it(`should have as title 'sa-launch-ui'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('embedded-qs-app');
+    expect(app.title).toEqual('sa-launch-ui');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('embedded-qs-app app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('sa-launch-ui app is running!');
   });
 });

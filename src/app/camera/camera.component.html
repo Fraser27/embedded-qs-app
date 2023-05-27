@@ -1,0 +1,24 @@
+<div>
+    <button (click)="checkPermissions()">Check the webcam permissions</button>
+    <p *ngIf="status">Status here: {{status}}</p>
+</div>
+
+<div *ngIf="stream">
+     <!-- web cam image will be shown here -->
+    <div *ngIf="showCam"><webcam [height]="380" 
+        [width]="400"  [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam></div>
+    
+    
+        <input type="checkbox" id="vehicle1" name="vehicle1"/>
+        <label for="vehicle1"><b>I provide my consent willingly to AnyShop to store my data. <a href="https://www.amazon.in/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ">Click to understand more</a></b></label><br>
+        <input type="text" [(ngModel)]="face_name" name="Store Face Name"/>
+    <button (click)="captureImage()" >Search Existing Customer</button><span>                                                  </span>
+    <button (click)="toggleCam()" >{{btnLabel2}}</button><span>&nbsp;</span>
+    <button (click)="storeFace()" >Save New Customer</button>     
+</div>
+
+<!-- Preview section -->
+<div *ngIf="previewImage">
+    <img [src]="previewImage" height="50" width="50">
+    <!-- <button (click)="proceed()">Proceed</button> -->
+</div>
