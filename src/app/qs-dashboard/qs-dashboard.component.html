@@ -6,23 +6,13 @@
                     <ng-select [items]="dashboards" [(ngModel)]="selected_dashboard"
                         (change)="reload_dashboard($event)"></ng-select>
                 </td>
-                <td>
-                    <input type="checkbox" [(ngModel)]="testRLS" />
-                </td>
-                <td *ngIf="testRLS">
-                    <span>Check the People's Overview Dashboard for Tag based RLS</span>
-                    <ng-select [items]="qs_tag_rls"
-                        (change)="set_session_tags($event)"></ng-select>
-                </td>
-                <td class="dash-filter" *ngIf="selected_dashboard.label == 'Dark Theme(With Ads)'">
-                    <ng-select [items]="products" [(ngModel)]="selected_product" (change)="load_products($event)">Filter
-                        By Products</ng-select>
-                </td>
-                <td class="dash-filter" *ngIf="selected_dashboard.label == 'Maps Demo'">
-                    <ng-select [items]="country_codes" [(ngModel)]="selected_country"
-                        (change)="load_countries($event)">Filter By Countries</ng-select>
-                </td>
             </tr>
+            <tr><td *ngIf = "selected_dashboard.label.toLowerCase().includes('people')">
+                <span>Check the People's Overview Dashboard for Tag based RLS</span>
+                <ng-select [items]="qs_tag_rls"
+                    (change)="set_session_tags($event)"></ng-select>
+            </td></tr>
+            
             <tr>
                 <div *ngIf="showDash" class="qs-frame" id="dashboardContainer" style="width: 90vw;"></div>
             </tr>

@@ -29,10 +29,10 @@ export class QsDashboardComponent implements OnInit {
   ]
 
   qs_tag_rls = [
-      {'value':'Ramona Ellis', 'label': 'Ramona Ellis EMEA'},
-      {'value': 'Janet Russell', 'label': 'Janet Russell'},
-      {'value': 'Francis Sims', 'label': 'Francis Sims'},
-      {'value': 'Franco', 'label': 'Franco'}
+      {'value':'Ramona Ellis', 'label': 'Ramona Ellis | EMEA'},
+      {'value': 'Janet Russell', 'label': 'Janet Russell | US'},
+      {'value': 'Francis Sims', 'label': 'Francis Sims | US'},
+      {'value': 'Franco', 'label': 'Franco | None'}
   ]
 
   products = [
@@ -80,7 +80,7 @@ export class QsDashboardComponent implements OnInit {
 
   public async GetDashboardURL() {
     this.showDash = false
-    const response = await this.http.get<any>(environment.apiUrl + environment.method_name +"?dash_id=" + this.selected_dashboard['value']).toPromise();
+    const response = await this.http.get<any>(environment.apiUrl + environment.method_name +"?dash_id=" + this.selected_dashboard.value).toPromise();
     var url = ''
     if (response) {
       if ('Status' in response && response['Status'] == 200) {
@@ -99,21 +99,13 @@ export class QsDashboardComponent implements OnInit {
   }
 
   async set_session_tags(event: any) {
-    this.showDash = false
-    const response = await this.http.get<any>(environment.apiUrl + environment.method_name +"?tagValue="+event['value']).toPromise();
+    const response = await this.http.get<any>(environment.apiUrl + environment.method_name +"?tagValue="+event['value'] + "&dash_id="+this.selected_dashboard.value).toPromise();
     var url = ''
     if (response) {
       if ('Status' in response && response['Status'] == 200) {
+        // url = response['EmbedUrl']
         url = response['EmbedUrl']
-        this.dashboards = []
-        response['dashboardList'].forEach((la: any) => {
-          this.dashboards.push({'value': la['dashboard_id'], 'label': la['dashboard_name']})
-        });
-        this.selected_dashboard = this.dashboards[0]
-        this.showDash = true
-        setTimeout(() => {
-          this.Dashboard(url);
-        }, 10);
+        this.Dashboard(url);
       }
     }
   }

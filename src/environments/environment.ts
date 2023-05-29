@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://0rnmsgzcla.execute-api.us-east-1.amazonaws.com/dev',
+  apiUrl: 'https://yn3rryfc96.execute-api.us-east-1.amazonaws.com/dev',
   method_name: '/embed-url'
 };
 
